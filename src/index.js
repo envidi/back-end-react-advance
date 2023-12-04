@@ -18,7 +18,7 @@ app.use("/api", router);
 
 const start =async ()=>{
     try {
-        await connectDB(process.env.MONGO_URI)
+        await connectDB(process.env.MONGO_URI_ATLAS)
         app.listen(PORT,()=>{
             console.log(`http://localhost:${PORT}` )
         })
