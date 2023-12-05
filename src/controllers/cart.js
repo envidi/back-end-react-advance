@@ -85,5 +85,21 @@ const deleteCart = async (req, res) => {
     
    
 }
+const deleteCartHard = async (req, res) => {
+  try {
+      const id = req.params.id;
+      const deletedCart = await Cart.findByIdAndDelete(id)
 
-export {getAll,deleteCart,update,createCart}
+      if (!deletedCart ) return res.status(404).json("Xoá đơn hàng thất bại!");
+
+      return res.status(200).json("Xoá đơn hàng thành công!");
+    } catch (error) {
+      return res.status(500).json({
+        message: error.message,
+      });
+    }
+  
+ 
+}
+
+export {getAll,deleteCart,update,createCart,deleteCartHard}
